@@ -34,5 +34,4 @@ public class SigninPageTest extends BaseTest {
         AssertFail(contactListPageAction.isContactListPageVisible(), "Verify My Contact page is displayed");
     }
 
-
 }

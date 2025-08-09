@@ -17,5 +17,8 @@ public class LoginPageRepo extends UiBase {
     @FindBy(css = "#signup")
     protected   WebElement signinBtn;
 
+    @FindBy(xpath = "//p[contains(text(),\"Log In\")]")
+    protected   WebElement loginLabel;
+
 
 }

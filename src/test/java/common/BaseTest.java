@@ -10,6 +10,8 @@ import utils.ExcelUtils;
 import utils.ExtentReportManager;
 
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BaseTest extends PageInitializer {
 
@@ -129,6 +131,38 @@ public class BaseTest extends PageInitializer {
         }else{
             logFailStep(message);
         }
+    }
+
+    protected void deleteAllContacts(){
+        navigateToContactListPage();
+        int size = contactListPageAction.numberOfContacts();
+        for(int i=0; i<size; i++){
+            contactListPageAction.clickOnFirstContact();
+            contacDetailPageAction.clickDeleteContact();
+            contactListPageAction.isContactListPageVisible();
+        }
+    }
+
+    protected void navigateToContactListPage(){
+        driver.get(ConfigReader.get("url"));
+        contactListPageAction.isContactListPageVisible();
+    }
+
+    protected void navigateBack(){
+        staticWait(2000);
+        getDriver().navigate().back();
+    }
+
+    protected void staticWait(int milliseconds){
+        try {
+            Thread.sleep(milliseconds);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static String generateUniquePhoneNumber() {
+        return new SimpleDateFormat("MMddHHmmss").format(new Date());
     }
 
 }

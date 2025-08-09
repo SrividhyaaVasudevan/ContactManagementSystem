@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -68,7 +69,7 @@ public class UiBase{
         js.executeScript("arguments[0].click();", element);
     }
 
-    protected void refresh(){
+    public void refresh(){
         driver.navigate().refresh();
     }
 
@@ -84,15 +85,54 @@ public class UiBase{
         return element.getAttribute(Attribute);
     }
 
+    protected boolean isEmpty(WebElement element){
+        return element.getAttribute("value").isEmpty();
+    }
+
     protected void clearAndFill(WebElement element, String text){
-        element.clear();
+        clear(element);
         staticWait(500);
         element.sendKeys(text);
     }
 
+    protected void clear(WebElement element){
+        click(element);
+        element.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        element.sendKeys(Keys.DELETE);
+        staticWait(1000);
+        element.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        element.sendKeys(Keys.BACK_SPACE);
+    }
+
     public static String generateUniqueEmail() {
-        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        return "testuser" + timeStamp + "@test.com";
+        String timeStamp = new SimpleDateFormat("MMddHHmmss").format(new Date());
+        return "srividhyaa" + timeStamp + "@test.com";
+    }
+
+    public static String generateUniquePhoneNumber() {
+        return new SimpleDateFormat("MMddHHmmss").format(new Date());
+    }
+
+    public boolean acceptAlert(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            alert.accept();
+            return true;
+        } catch (TimeoutException e) {
+            System.out.println("No alert appeared within the timeout period");
+            return false;
+        }
+    }
+
+    public boolean checkAlert(){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.alertIsPresent());
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
 

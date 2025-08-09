@@ -26,8 +26,8 @@ public class LoginPageAction extends LoginPageRepo {
 
     public void fillEmailAndPassword(String email, String password){
         waitUntilElementDisplayed(emailField);
-        clearAndFill(emailField, email);
-        clearAndFill(passwordField, password);
+        fill(emailField, email);
+        fill(passwordField, password);
     }
 
     public boolean checkIfPasswordMasked(){
@@ -38,6 +38,10 @@ public class LoginPageAction extends LoginPageRepo {
     public boolean validateError(String error){
         waitUntilElementDisplayed(errorMsg);
         return error.equalsIgnoreCase(getText(errorMsg));
+    }
+
+    public boolean loginPageVisible(){
+        return waitUntilElementDisplayed(loginLabel);
     }
 
 

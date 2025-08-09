@@ -16,10 +16,10 @@ public class SigninPageAction extends SigninPageRepo {
 
     public void fillSigninDetails(String firstName, String lastName, String email, String password){
         waitUntilElementDisplayed(firstNameField);
-        clearAndFill(firstNameField, firstName);
-        clearAndFill(lastNameField, lastName);
-        clearAndFill(emailField, email);
-        clearAndFill(passwordField, password);
+        fill(firstNameField, firstName);
+        fill(lastNameField, lastName);
+        fill(emailField, email);
+        fill(passwordField, password);
     }
 
     public void signin(String firstName, String lastName, String email, String password){
@@ -34,6 +34,7 @@ public class SigninPageAction extends SigninPageRepo {
 
     public void signinNewUser(String firstName, String lastName, String password){
         String newEmail = generateUniqueEmail();
+        System.out.println(newEmail);
         fillSigninDetails(firstName, lastName, newEmail, password);
         click(submitBtn);
     }
