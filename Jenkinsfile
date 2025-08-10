@@ -31,7 +31,7 @@ pipline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: 'test-output/ExtentReports/ExtentReport_2025-08-09_03-12-01.html',
+                    reportDir: 'test-output/ExtentReports/ExtentReport.html',
                     reportFiles: 'index.html',
                     reportName: 'Extent Report'
                 ])
