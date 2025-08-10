@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import utils.ConfigReader;
 
 import java.time.Duration;
@@ -15,18 +16,17 @@ public class BrowserInitializer {
     WebDriver driver;
     public WebDriver driverInitializer()
     {
-        String browserName = ConfigReader.get("browser").toLowerCase();
 
-        switch (browserName) {
-            case "chrome":
-                chromeBrowser();
-                break;
-            case "edge":
-                throw new RuntimeException("Edge browser setup not completed");
-            case "firefox":
-                throw new RuntimeException("Firefox browser setup not completed");
-            default:
-                throw new RuntimeException("Browser not supported: " + browserName);
+        String browserName = System.getProperty("browser", "edge"); // default: chrome
+
+        if (browserName.equalsIgnoreCase("chrome")) {
+            chromeBrowser();
+        } else if (browserName.equalsIgnoreCase("edge")) {
+            edgeBrowser();
+        } else if (browserName.equalsIgnoreCase("firefox")) {
+            firefoxBrowser();
+        } else {
+            throw new IllegalArgumentException("Unsupported browser: " + browserName);
         }
 
         driver.manage().window().maximize();
@@ -37,6 +37,20 @@ public class BrowserInitializer {
     }
 
     public void chromeBrowser(){
+        ChromeOptions options = new ChromeOptions();
+        options.setAcceptInsecureCerts(true);
+        driver = new ChromeDriver(options);
+    }
+
+    public void edgeBrowser(){
+        System.setProperty("webdriver.edge.driver", "drivers/msedgedriver.exe");
+        EdgeOptions options = new EdgeOptions();
+        options.setAcceptInsecureCerts(true);
+        driver = new EdgeDriver(options);
+    }
+
+    public void firefoxBrowser(){
+        System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(options);

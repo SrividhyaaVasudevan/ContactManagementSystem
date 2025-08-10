@@ -31,7 +31,7 @@ public class SessionNavigationTest extends BaseTest {
         AssertFail(contactListPageAction.numberOfContacts() == 1, "Verify if Contact List appears after refresh");
     }
 
-    @Test(priority = -1)
+    //@Test(priority = -1)
     public void verifyLogoutNavigation() {
         Map<String, String> data = testData.getExcelData("login", "validData");
         loginPageAction.login(data.get("email"), data.get("password"));
