@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import utils.ConfigReader;
 
 import java.time.Duration;
@@ -16,8 +17,8 @@ public class BrowserInitializer {
     WebDriver driver;
     public WebDriver driverInitializer()
     {
-
-        String browserName = System.getProperty("browser", "edge"); // default: chrome
+        // default: chrome
+        String browserName = System.getProperty("browser", "chrome").toLowerCase();
 
         if (browserName.equalsIgnoreCase("chrome")) {
             chromeBrowser();
@@ -51,9 +52,9 @@ public class BrowserInitializer {
 
     public void firefoxBrowser(){
         System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-        ChromeOptions options = new ChromeOptions();
+        FirefoxOptions options = new FirefoxOptions();
         options.setAcceptInsecureCerts(true);
-        driver = new ChromeDriver(options);
+        driver = new FirefoxDriver(options);
     }
 
     public WebDriver getDriver(){
