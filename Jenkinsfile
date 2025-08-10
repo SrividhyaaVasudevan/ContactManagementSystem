@@ -21,12 +21,13 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: 'test-output/ExtentReports/ExtentReport.html',
-                    reportFiles: 'index.html',
+                    reportDir: 'test-output/ExtentReports',
+                    reportFiles: 'ExtentReport.html',
                     reportName: 'Extent Report'
                 ])
             }
         }
+
     }
 
     post {
