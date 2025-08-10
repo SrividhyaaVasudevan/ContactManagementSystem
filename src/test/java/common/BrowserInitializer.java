@@ -52,7 +52,7 @@ public class BrowserInitializer {
     }
 
     public void firefoxBrowser(){
-        System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "drivers\\geckodriver.exe");
         FirefoxOptions options = new FirefoxOptions();
         options.setAcceptInsecureCerts(true);
         driver = new FirefoxDriver(options);
