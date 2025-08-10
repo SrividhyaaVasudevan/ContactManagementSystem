@@ -38,14 +38,14 @@ public class BrowserInitializer {
     }
 
     public void chromeBrowser(){
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(options);
     }
 
     public void edgeBrowser(){
-        System.setProperty("webdriver.edge.driver", "drivers/msedgedriver.exe");
+        System.setProperty("webdriver.edge.driver", "drivers\\msedgedriver.exe");
         EdgeOptions options = new EdgeOptions();
         options.setAcceptInsecureCerts(true);
         driver = new EdgeDriver(options);
