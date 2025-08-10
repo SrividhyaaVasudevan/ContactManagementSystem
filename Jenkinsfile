@@ -28,6 +28,12 @@ pipeline {
             }
         }
 
+        stage('Archive Extent Report') {
+            steps {
+                archiveArtifacts artifacts: 'test-output/ExtentReports/ExtentReport.html', fingerprint: true
+            }
+        }
+
     }
 
     post {
