@@ -38,6 +38,7 @@ public class BrowserInitializer {
     }
 
     public void chromeBrowser(){
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(options);
