@@ -38,21 +38,21 @@ public class BrowserInitializer {
     }
 
     public void chromeBrowser(){
-        System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(options);
     }
 
     public void edgeBrowser(){
-        System.setProperty("webdriver.edge.driver", "drivers\\msedgedriver.exe");
+        System.setProperty("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe");
         EdgeOptions options = new EdgeOptions();
         options.setAcceptInsecureCerts(true);
         driver = new EdgeDriver(options);
     }
 
     public void firefoxBrowser(){
-        System.setProperty("webdriver.gecko.driver", "drivers\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
         FirefoxOptions options = new FirefoxOptions();
         options.setAcceptInsecureCerts(true);
         driver = new FirefoxDriver(options);
