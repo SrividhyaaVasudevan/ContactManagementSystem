@@ -1,15 +1,10 @@
 pipline {
     agent any
 
-    tools {
-        maven 'Maven-3.9.4' // Your Maven installation name
-        jdk 'JDK-17'        // Your JDK installation name
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-org/your-repo.git'
+                git branch: 'main', url: 'https://github.com/SrividhyaaVasudevan/ContactManagementSystem.git'
             }
         }
 
