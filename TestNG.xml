@@ -14,18 +14,18 @@
         </classes>
     </test>
 
-<!--    <test name="ContactListAppTests_Edge">-->
-<!--        <parameter name="browser" value="edge"/>-->
-<!--        <classes>-->
-<!--            <class name="tests.LoginPageTest"/>-->
-<!--            <class name="tests.SigninPageTest"/>-->
-<!--            <class name="tests.AddContactTest_1"/>-->
-<!--            <class name="tests.AddContactTest_2"/>-->
-<!--            <class name="tests.EditContactTest"/>-->
-<!--            <class name="tests.DeleteContactTest"/>-->
-<!--            <class name="tests.SessionNavigationTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="ContactListAppTests_Edge">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="tests.LoginPageTest"/>
+            <class name="tests.SigninPageTest"/>
+            <class name="tests.AddContactTest_1"/>
+            <class name="tests.AddContactTest_2"/>
+            <class name="tests.EditContactTest"/>
+            <class name="tests.DeleteContactTest"/>
+            <class name="tests.SessionNavigationTest"/>
+        </classes>
+    </test>
 
     <test name="ContactListAppTests_Firefox">
         <parameter name="browser" value="firefox"/>
